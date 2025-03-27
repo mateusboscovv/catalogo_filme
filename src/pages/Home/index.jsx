@@ -1,20 +1,20 @@
 import { useState } from 'react'
-import './App.css'
 
-function App() {
+
+function Home() {
   const [count, setCount] = useState(0)
 
   /*retorn -- mostra na tela todos os elementos de hipertexto do HTML*/ 
   return (
     <>
       <div>
-        <h1>Navegue</h1>
+        <button class="button-initialHome">Investigue</button> 
       </div>
       <p className="read-the-docs">
-        Clique a cima no título para submergir no blog Plotástico
+        Clique no título a cima para inspecionar uma temática no blog Plotástico
       </p>
     </>
   )
 }
 
-export default App
+export default Home

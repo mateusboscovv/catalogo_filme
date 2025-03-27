@@ -1,0 +1,61 @@
+/* Reset de margens e preenchimentos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do cabeçalho */
+#header {
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Texto branco */
+    padding: 15px 0;
+    position: fixed; /* Fixa o cabeçalho no topo */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique sobre outros elementos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efeito de sombra */
+}
+
+/* Centralizar e organizar a navegação */
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaço entre os itens */
+}
+
+li {
+    padding: 5px 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+a:hover {
+    color: #ffcc00;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+    ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Para evitar que o conteúdo fique escondido atrás do cabeçalho */
+.content {
+    margin-top: 80px; /* Espaço para compensar o cabeçalho fixo */
+    padding: 20px;
+}
