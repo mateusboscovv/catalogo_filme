@@ -9,7 +9,7 @@ function Home() {
   const timerRef = useRef(null);
   
   const imagens = [
-    'https://via.placeholder.com/800x400?text=Imagem+1',
+    'file:///C:/Users/anani/Downloads/foto2.pdf',
     'https://via.placeholder.com/800x400?text=Imagem+2',
     'https://via.placeholder.com/800x400?text=Imagem+3',
     'https://via.placeholder.com/800x400?text=Imagem+4',
@@ -112,6 +112,19 @@ function Home() {
               />
             ))}
           </div>
+        </div>
+
+      <div className="text-container">
+          <h2>Título do Seu Texto</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. 
+            Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus 
+            rhoncus ut eleifend nibh porttitor.
+          </p>
+          <p>
+            Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl 
+            tempor. Suspendisse dictum feugiat nisl ut dapibus.
+          </p>
         </div>
 
         <h1>Bem-vindo ao Meu Site</h1>
