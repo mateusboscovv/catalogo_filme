@@ -1,0 +1,96 @@
+/* Reset de margens e preenchimentos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do cabeçalho */
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo do header vertical */
+  .vertical-header {
+    background-color: #333;
+    color: white;
+    width: 200px; /* Largura da sidebar */
+    height: 100vh; /* Altura total da viewport */
+    position: fixed; /* Fixa na tela */
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  /* Estilo da navegação */
+  .vertical-header nav {
+    flex-grow: 1; /* Ocupa todo o espaço disponível */
+  }
+  
+  /* Estilo da lista */
+  .vertical-header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre itens */
+  }
+  
+  /* Estilo dos itens da lista */
+  .vertical-header li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .vertical-header li a:hover {
+    color: #4CAF50; /* Cor ao passar o mouse */
+  }
+
+/* Centralizar e organizar a navegação */
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaço entre os itens */
+}
+
+li {
+    padding: 5px 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+a:hover {
+    color: #ffcc00;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+    ul {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Para evitar que o conteúdo fique escondido atrás do cabeçalho */
+.content {
+    margin-top: 80px; /* Espaço para compensar o cabeçalho fixo */
+    padding: 20px;
+}
