@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef, TextInput, Image } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './style.css';
+import { salvarTextoNoFirebase } from './firebaseConfig'; // Importe a função do Firebase
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Estados e funções do carrossel
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef(null);
   const [text, setText] = useState("");
+
   const imagens = [
     'file:///C:/Users/anani/Downloads/foto2.pdf',
     'https://via.placeholder.com/800x400?text=Imagem+2',
@@ -48,6 +48,21 @@ function Home() {
     startTimer();
   };
 
+  function handleClick() {
+    if (text.trim()) {
+      salvarTextoNoFirebase(text) // Chama a função para salvar no Firebase
+        .then(() => {
+          setText(""); // Limpa o campo após o envio
+          alert("Texto enviado com sucesso!");
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar:", error);
+          alert("Ocorreu um erro ao enviar o texto.");
+        });
+    } else {
+      alert("Por favor, digite algo antes de enviar.");
+    }
+  }
   return (
     <>
 
@@ -119,13 +134,12 @@ function Home() {
 
         <div>
         <textarea 
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Digite algo..."
-            className="border p-2 w-full"
-          />
-
-          <button id="button-send"> Enviar </button>
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Digite algo..."
+          className="border p-2 w-full"
+        />
+          <button id="button-send"onClick={handleClick}> Enviar </button>
         </div>
 
         <div className="painel-fixo">
