@@ -1,3 +1,61 @@
+
+/* Estilos do Carrossel */
+.carrossel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  .carrossel-track {
+    display: flex;
+    height: 400px; /* Ajuste conforme necessário */
+  }
+  
+  .carrossel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .carrossel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carrossel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Estilo dos dots super pequenos */
+.dot {
+    width: 8px;          /* Tamanho extremamente reduzido */
+    height: 8px;         /* Mantém proporção quadrada */
+    border-radius: 50%;  /* Forma circular */
+    background-color: rgba(120, 46, 46, 0.3); /* Cor com transparência */
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0 3px;       /* Espaçamento reduzido entre dots */
+    padding: 0;
+  }
+  
+  /* Estado hover (opcional) */
+  .dot:hover {
+    background-color: rgba(120, 46, 46, 0.6);
+  }
+  
+  /* Dot ativo (slide atual) */
+  .dot.active {
+    background-color: rgba(120, 46, 46, 0.9); /* Cor mais sólida */
+  }
+ 
 /* Reset de margens e preenchimentos */
 * {
     margin: 0;
@@ -8,9 +66,7 @@
 /* Estilo do cabeçalho */
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; 
   }
   
   /* Estilo do header vertical */
@@ -182,4 +238,5 @@ a:hover {
     }
   }
 
+  
   
