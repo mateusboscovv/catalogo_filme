@@ -1,12 +1,48 @@
 import { useState, useEffect, useRef } from 'react';
 import './style.css';
 import { salvarTextoNoFirebase } from './firebaseConfig'; // Importe a função do Firebase
+import { database } from "./firebaseConfig";
+import { ref, get } from "firebase/database";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef(null);
   const [text, setText] = useState("");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+  
+    if (!user || !password) {
+      setError("Preencha todos os campos.");
+      return;
+    }
+
+    try {
+      const userRef = ref(database, `logins/${user}`);
+      const snapshot = await get(userRef);
+
+      if (snapshot.exists()) {
+        const storedPassword = snapshot.val();
+        if (storedPassword === password) {
+          alert("Login bem-sucedido!");
+          localStorage.setItem("user", user);
+          window.location.href = "/dashboard"; // Redirecionamento
+        } else {
+          setError("Senha incorreta.");
+        }
+      } else {
+        setError("Usuário não encontrado.");
+      }
+    } catch (err) {
+      setError("Erro ao conectar ao servidor.");
+      console.error(err);
+    }
+  };
 
   const imagens = [
     'file:///C:/Users/anani/Downloads/foto2.pdf',
@@ -48,6 +84,9 @@ function Home() {
     startTimer();
   };
 
+  function login(){
+    
+  }
   function handleClick() {
     if (text.trim()) {
       salvarTextoNoFirebase(text) // Chama a função para salvar no Firebase
@@ -66,6 +105,25 @@ function Home() {
   return (
     <>
 
+<div>
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Usuário"
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Entrar</button>
+      </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </div>
 
       <button
         className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
@@ -138,10 +196,13 @@ function Home() {
           onChange={(e) => setText(e.target.value)}
           placeholder="Digite algo..."
           className="border p-2 w-full"
-        />
+        />  
           <button id="button-send"onClick={handleClick}> Enviar </button>
         </div>
 
+          <div>
+            <button id="button-login"onClick={login}>Login</button>
+          </div>
         <div className="painel-fixo">
       <h2>Resumo da obra Us</h2>
         <p>Dirigido por Jordan Peele, Us é um filme de terror psicológico que segue a família Wilson durante as férias na praia. A trama toma um rumo aterrorizante quando um grupo de doppelgängers (sósias) invade sua casa à noite. Esses invasores, chamados de Os Presos, são versões sombrias e violentas de cada pessoa, vindas de um mundo subterrâneo.

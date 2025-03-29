@@ -52,3 +52,5 @@ export async function lerTextosDoFirebase() {
     throw error;
   }
 }
+
+export { database };
